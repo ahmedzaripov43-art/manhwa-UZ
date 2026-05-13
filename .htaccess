@@ -1,0 +1,22 @@
+Options -Indexes
+RewriteEngine On
+
+# -- Static fayllarga to'g'ridan kirish (CSS, JS, rasmlar) --
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# -- URL marshrutlash --
+
+# /comic/slug
+RewriteRule ^comic/([^/]+)/?$  comic.php?slug=$1  [L,QSA]
+
+# /reader/slug/chapter-number
+RewriteRule ^reader/([^/]+)/(\d+)/?$  reader.php?slug=$1&chapter=$2  [L,QSA]
+
+# /browse
+RewriteRule ^browse/?$  browse.php  [L,QSA]
+
+# Barchasi → index.php
+RewriteRule ^$  index.php  [L]
+RewriteRule ^.*$  404.php  [L]
