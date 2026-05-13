@@ -14,6 +14,9 @@ RUN echo '<Directory /var/www/html>\n\
 # Fayllarni ko'chirish
 COPY . /var/www/html/
 
+# Tekshirish
+RUN ls -la /var/www/html/data/comics.json
+
 # Ruxsatlar
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
