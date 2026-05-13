@@ -6,7 +6,12 @@ define('DATA_FILE',  __DIR__ . '/../data/comics.json');
 
 // Auto-detect base URL — works on localhost, shared hosting, VPS, subdirectory
 (function (): void {
-    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $scheme = 'https';
+    if (!empty($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+        $scheme = $_SERVER['HTTP_X_FORWARDED_PROTO'];
+    } elseif (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+        $scheme = 'https';
+    }
     $host   = $_SERVER['HTTP_HOST'] ?? 'localhost';
     // SCRIPT_NAME: e.g. /asuramanga2/index.php  →  base = /asuramanga2
     $script = $_SERVER['SCRIPT_NAME'] ?? '/index.php';
