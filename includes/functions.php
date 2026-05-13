@@ -152,18 +152,18 @@ function allGenres(): array
 
 function comicUrl(array $c): string
 {
-    return SITE_URL . '/comic/' . rawurlencode($c['slug']);
+    return '/comic/' . rawurlencode($c['slug']);
 }
 
 function chapterUrl(array $c, int $num): string
 {
-    return SITE_URL . '/reader/' . rawurlencode($c['slug']) . '/' . $num;
+    return '/reader/' . rawurlencode($c['slug']) . '/' . $num;
 }
 
 function coverUrl(array $c): string
 {
     $cover = $c['cover'] ?? '';
-    return str_starts_with($cover, '/') ? SITE_URL . $cover : $cover;
+    return str_starts_with($cover, '/') ? $cover : $cover;
 }
 
 function browseUrl(array $override = []): string
@@ -178,7 +178,7 @@ function browseUrl(array $override = []): string
 
     $params = array_filter($params, fn($v) => $v !== '' && $v != 1);
     $qs     = $params ? '?' . http_build_query($params) : '';
-    return SITE_URL . '/browse' . $qs;
+    return '/browse' . $qs;
 }
 
 /* ── Template helpers ───────────────────── */

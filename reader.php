@@ -26,7 +26,7 @@ if ($chIdx !== false) {
 
 // Local images
 $imgDir   = __DIR__ . '/uploads/' . $slug . '/chapter-' . $chNum;
-$imgWeb   = SITE_URL . '/uploads/' . rawurlencode($slug) . '/chapter-' . $chNum;
+$imgWeb   = '/uploads/' . rawurlencode($slug) . '/chapter-' . $chNum;
 $images   = [];
 if (is_dir($imgDir)) {
     $files = scandir($imgDir);
@@ -56,7 +56,7 @@ ob_start();
   <div class="mx-auto flex items-center justify-between gap-3 px-3 py-2.5 max-w-[1285px]">
     <!-- Breadcrumb -->
     <div class="flex items-center gap-2 text-sm min-w-0 overflow-hidden">
-      <a href="<?= SITE_URL ?>/" class="text-white/50 hover:text-white transition-colors flex-shrink-0">
+      <a href="/" class="text-white/50 hover:text-white transition-colors flex-shrink-0">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </a>
       <span class="text-white/30">›</span>
